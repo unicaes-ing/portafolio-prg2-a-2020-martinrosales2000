@@ -16,5 +16,10 @@ namespace Practica_2
         {
             InitializeComponent();
         }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
