@@ -17,75 +17,67 @@ namespace Practica_2
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btnConvertir_Click(object sender, EventArgs e)
+        private void rdoDescuento1_CheckedChanged(object sender, EventArgs e)
         {
-            try
-            {
-                int n = Convert.ToInt32(txtNumero.Text);
-                string roman = "";
-                if (n >= 1 && n <= 10)
-                {
-                    if (n == 1)
-                    {
-                        roman = "I";
-                    }
-                    else if (n == 2)
-                    {
-                        roman = "II";
-                    }
-                    else if (n == 3)
-                    {
-                        roman = "III";
-                    }
-                    else if (n == 4)
-                    {
-                        roman = "IV";
-                    }
-                    else if (n == 5)
-                    {
-                        roman = "V";
-                    }
-                    else if (n == 6)
-                    {
-                        roman = "VI";
-                    }
-                    else if (n == 7)
-                    {
-                        roman = "VII";
-                    }
-                    else if (n == 8)
-                    {
-                        roman = "VIII";
-                    }
-                    else if (n == 9)
-                    {
-                        roman = "IX";
-                    }
-                    else
-                    {
-                        roman = "x";
-                    }
-                    lblRomano.Text = "Equivale a: " + roman + " en romano.";
-                }
-                else
-                {
-                    txtNumero.Focus();
-                    txtNumero.SelectAll();
-                    lblRomano.Text = "ingrese un numero entre 1-10";
-                }
-            }
-            catch (Exception)
-            {
-                txtNumero.Focus();
-                txtNumero.SelectAll();
-                lblRomano.Text = "ingrese solo numero";
 
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            double total, descuento, subtotal;
+            if (rdoDescuento1.Checked)
+            {
+                subtotal = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(txtPrecio.Text);
+                descuento = subtotal * 0.00;
+                txtDescuento.Text = descuento.ToString();
+                total = subtotal - descuento;
+                txtTotal.Text = total.ToString();
             }
+            else if (rdoDescuento2.Checked)
+            {
+                subtotal = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(txtPrecio.Text);
+                descuento = subtotal * 0.05;
+                txtDescuento.Text = descuento.ToString();
+                total = subtotal - descuento;
+                txtTotal.Text = total.ToString();
+            }
+            else if (rdoDescuento3.Checked)
+            {
+                subtotal = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(txtPrecio.Text);
+                descuento = subtotal * 0.10;
+                txtDescuento.Text = descuento.ToString();
+                total = subtotal - descuento;
+                txtTotal.Text = total.ToString();
+            }
+            else if (rdoDescuento4.Checked)
+            {
+                subtotal = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(txtPrecio.Text);
+                descuento = subtotal * 0.15;
+                txtDescuento.Text = descuento.ToString();
+                total = subtotal - descuento;
+                txtTotal.Text = total.ToString();
+            }
+            else if (rdoDescuento5.Checked)
+            {
+                subtotal = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(txtPrecio.Text);
+                descuento = subtotal * 0.20;
+                txtDescuento.Text = descuento.ToString();
+                total = subtotal - descuento;
+                txtTotal.Text = total.ToString();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCantidad.Clear();
+            txtPrecio.Clear();
+            txtDescuento.Clear();
+            txtTotal.Clear();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
