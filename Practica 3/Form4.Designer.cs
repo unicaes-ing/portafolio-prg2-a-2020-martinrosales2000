@@ -37,7 +37,7 @@
             // 
             // txtNum
             // 
-            this.txtNum.Location = new System.Drawing.Point(151, 388);
+            this.txtNum.Location = new System.Drawing.Point(151, 383);
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(100, 20);
             this.txtNum.TabIndex = 1;
@@ -53,12 +53,13 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(302, 383);
+            this.btnBuscar.Location = new System.Drawing.Point(296, 383);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dataGridView1
             // 

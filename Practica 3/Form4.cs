@@ -26,6 +26,23 @@ namespace Practica_3
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Random n = new Random();
+            for (int f = 0; f < 10; f++)
+            {
+                for (int c = 0; c < 10; c++)
+                {
+                    dataGridView1.Rows[f].Cells[c].Value = n.Next(10, 100);
+                   
+                }
+               
+            }
+            dataGridView1.ClearSelection();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+           
+            
         }
     }
 }
