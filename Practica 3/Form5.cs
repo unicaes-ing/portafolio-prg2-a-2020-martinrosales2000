@@ -20,7 +20,7 @@ namespace Practica_3
 
         private void txtNombre_Validating(object sender, CancelEventArgs e)
         {
-            string nombre= @"^[a-zA-Zñ]+[a-zA-Zñ\s]+[a-zA-Zñ]$";
+            string nombre= @"^(([A-Z[ÁÉÍÓÚ][a-zñ[áéíóú]{2,})(\s)?)*[^\s]$";
             if (!Regex.IsMatch(txtNombre.Text, nombre))
             {
                 e.Cancel=true;
@@ -77,7 +77,7 @@ namespace Practica_3
         {
             string nombre = txtNombre.Text;
             int horas ;
-            double precio, subtotal, total, impuesto, tn=0.0, totalplanilla;
+            double precio, subtotal, total, impuesto, tn=0, totalplanilla=0;
 
 
             if (nombre != string.Empty && int.TryParse(txtHoras.Text, out horas) && double.TryParse(txtValorhora.Text, out precio))
@@ -85,8 +85,8 @@ namespace Practica_3
                 subtotal = horas * precio;
                 impuesto = (subtotal * 0.10);
                 total = subtotal - impuesto;
-                lblTotalplanilla.Text = total.ToString();
-                dataGridView1.Rows.Add(nombre, horas, precio, subtotal,impuesto,total);
+
+                dataGridView1.Rows.Add(nombre, horas, precio, subtotal, impuesto, total);
                 
             }
             
