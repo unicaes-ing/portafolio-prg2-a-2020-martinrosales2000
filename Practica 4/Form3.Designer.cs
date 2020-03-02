@@ -75,6 +75,7 @@
             this.btnCalcular.TabIndex = 4;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // Form3
             // 

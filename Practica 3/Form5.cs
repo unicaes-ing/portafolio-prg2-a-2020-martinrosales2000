@@ -20,10 +20,10 @@ namespace Practica_3
 
         private void txtNombre_Validating(object sender, CancelEventArgs e)
         {
-            string nombre= @"^(([A-Z[ÁÉÍÓÚ][a-zñ[áéíóú]{2,})(\s)?)*[^\s]$";
+            string nombre = @"^(([A-Z[ÁÉÍÓÚ][a-zñ[áéíóú]{2,})(\s)?)*[^\s]$";
             if (!Regex.IsMatch(txtNombre.Text, nombre))
             {
-                e.Cancel=true;
+                e.Cancel = true;
                 txtNombre.SelectAll();
                 errorProvider1.SetError(txtNombre, "El nombre ingresado no es valido...\nCada nombre ingresado debe iniciar en mayusculas...");
             }
@@ -40,7 +40,7 @@ namespace Practica_3
             {
                 e.Handled = false;
             }
-            else if (char.IsLetter(e.KeyChar)||char.IsPunctuation(e.KeyChar)||char.IsSymbol(e.KeyChar))
+            else if (char.IsLetter(e.KeyChar) || char.IsPunctuation(e.KeyChar) || char.IsSymbol(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -53,7 +53,7 @@ namespace Practica_3
                 txtHoras.Focus();
                 errorProvider1.SetError(txtHoras, "La cantidad de horas es un campo obligatorio...\nIngrese la cantidad de horas...");
             }
-        
+
         }
         private void txtHoras_Validated(object sender, EventArgs e)
         {
@@ -76,8 +76,8 @@ namespace Practica_3
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
-            int horas ;
-            double precio, subtotal, total, impuesto, tn=0, totalplanilla=0;
+            int horas;
+            double precio, subtotal, total=0, impuesto, tn = 0;
 
 
             if (nombre != string.Empty && int.TryParse(txtHoras.Text, out horas) && double.TryParse(txtValorhora.Text, out precio))
@@ -87,16 +87,27 @@ namespace Practica_3
                 total = subtotal - impuesto;
 
                 dataGridView1.Rows.Add(nombre, horas, precio, subtotal, impuesto, total);
-                
-            }
-            
 
+            }
+            double suma = 0.0;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                suma = suma + Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
+            }
+
+
+            lblTotalplanilla.Text = suma.ToString();
         }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Clear();
             txtHoras.Clear();
             txtValorhora.Clear();
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
