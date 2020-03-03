@@ -19,7 +19,7 @@ namespace Practica_3
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            dataGridView1.Size = new Size(210, 220);
+            //dataGridView1.Size = new Size(210, 220);
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ScrollBars = ScrollBars.Both;
             dataGridView1.ColumnCount = 10;
