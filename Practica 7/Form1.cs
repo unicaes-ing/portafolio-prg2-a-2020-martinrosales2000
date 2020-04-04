@@ -149,7 +149,7 @@ namespace Practica_7
             if (dataGridView1.Rows.Count>0)
             {
                 Form2 form = new Form2();
-                form.Show();
+                form.ShowDialog();
                 
             }
             else
