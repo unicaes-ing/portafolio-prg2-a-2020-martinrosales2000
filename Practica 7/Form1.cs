@@ -145,8 +145,18 @@ namespace Practica_7
 
         private void btnMascotas_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
-            form.Show();
+           
+            if (dataGridView1.Rows.Count>0)
+            {
+                Form2 form = new Form2();
+                form.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("No existen datos de propietario...\nDebe ingresar almenos un propietario...");
+                txtNombre.Focus();
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
