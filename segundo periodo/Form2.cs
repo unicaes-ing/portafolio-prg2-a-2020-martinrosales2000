@@ -46,7 +46,7 @@ namespace Segundo_Periodo
             dgvMatriz1.ClearSelection();
             dgvMatriz2.ClearSelection();
         }
-        public static int [,]suma(int [,]A, int [,]B, RadioButton suma)
+        public static int[,] suma(int[,]A, int[,] B, RadioButton suma)
         {
             int[,] Resultado = new int[5, 5];
          
@@ -78,36 +78,38 @@ namespace Segundo_Periodo
         {
             dgvResultado.Rows.Clear();
             dgvResultado.Columns.Clear();
+            dgvResultado.AllowUserToAddRows = false;
+            dgvResultado.ColumnCount = 5;
+            dgvResultado.ColumnHeadersVisible = false;
+            dgvResultado.RowHeadersVisible = false;
+            dgvResultado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvResultado.ScrollBars = ScrollBars.Both;
+            int[,] Respuesta = new int[5, 5];
             if (rdoSumar.Checked)
             {
-                dgvResultado.ColumnCount = 5;
-                dgvResultado.ColumnHeadersVisible = false;
-                dgvResultado.RowHeadersVisible = false;
-                dgvResultado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                for (int f = 0; f < Resultado.GetLength(0); f++)
+                Respuesta = suma(A,B,rdoSumar);
+
+                for (int f = 0; f < A.GetLength(0); f++)
                 {
                     dgvResultado.Rows.Add();
-                    for (int c = 0; c < Resultado.GetLength(1); c++)
+                    for (int c = 0; c < B.GetLength(1); c++)
                     {
                          
-                        dgvResultado.Rows[f].Cells[c].Value = suma(A, B, rdoSumar);
+                        dgvResultado.Rows[f].Cells[c].Value = Respuesta[f,c];
                     }
                 }
                 dgvResultado.ClearSelection();
             }
             else if (rdoMultiplicar.Checked)
             {
-                dgvResultado.ColumnCount = 5;
-                dgvResultado.ColumnHeadersVisible = false;
-                dgvResultado.RowHeadersVisible = false;
-                dgvResultado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                for (int f = 0; f < Resultado.GetLength(0); f++)
+                Respuesta = multi(A, B, rdoSumar);
+                for (int f = 0; f < B.GetLength(0); f++)
                 {
                     dgvResultado.Rows.Add();
-                    for (int c = 0; c < Resultado.GetLength(1); c++)
+                    for (int c = 0; c < B.GetLength(1); c++)
                     {
 
-                        dgvResultado.Rows[f].Cells[c].Value = multi(A, B, rdoMultiplicar);
+                        dgvResultado.Rows[f].Cells[c].Value = Respuesta[f,c];
                     }
                 }
                 dgvResultado.ClearSelection();

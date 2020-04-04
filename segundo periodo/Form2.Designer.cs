@@ -96,13 +96,13 @@
             this.rdoMultiplicar.Name = "rdoMultiplicar";
             this.rdoMultiplicar.Size = new System.Drawing.Size(72, 17);
             this.rdoMultiplicar.TabIndex = 1;
-            this.rdoMultiplicar.TabStop = true;
             this.rdoMultiplicar.Text = "Multiplicar";
             this.rdoMultiplicar.UseVisualStyleBackColor = true;
             // 
             // rdoSumar
             // 
             this.rdoSumar.AutoSize = true;
+            this.rdoSumar.Checked = true;
             this.rdoSumar.Location = new System.Drawing.Point(30, 19);
             this.rdoSumar.Name = "rdoSumar";
             this.rdoSumar.Size = new System.Drawing.Size(55, 17);

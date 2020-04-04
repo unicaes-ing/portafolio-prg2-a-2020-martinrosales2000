@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.lstLista = new System.Windows.Forms.ListBox();
             this.txtEmpleado = new System.Windows.Forms.TextBox();
@@ -41,9 +40,7 @@
             this.rdoAgregar = new System.Windows.Forms.RadioButton();
             this.btnEjecutar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,8 +66,6 @@
             this.txtEmpleado.Name = "txtEmpleado";
             this.txtEmpleado.Size = new System.Drawing.Size(100, 20);
             this.txtEmpleado.TabIndex = 2;
-            this.txtEmpleado.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmpleado_Validating);
-            this.txtEmpleado.Validated += new System.EventHandler(this.txtEmpleado_Validated);
             // 
             // groupBox1
             // 
@@ -167,10 +162,7 @@
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // Form1
             // 
@@ -187,7 +179,6 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +198,6 @@
         private System.Windows.Forms.RadioButton rdoAgregar;
         private System.Windows.Forms.Button btnEjecutar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

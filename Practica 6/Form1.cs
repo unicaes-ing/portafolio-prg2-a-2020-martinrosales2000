@@ -19,35 +19,17 @@ namespace Practica_6
         }
         List<string> Empleados = new List<string>();
 
-        private void txtEmpleado_Validating(object sender, CancelEventArgs e)
-        {
-            string patronNombre = @"^(([A-Z[ÁÉÍÓÚ][a-zñ[áéíóú]{2,})(\s)?)*[^\s]$";
-
-            if (!Regex.IsMatch(txtEmpleado.Text, patronNombre))
-            {
-                e.Cancel = true;
-                txtEmpleado.SelectAll();
-                errorProvider1.SetError(txtEmpleado, "Ingrese un nombre de usuario válido.");
-            }
-            else
-            {
-                e.Cancel = false;
-            }
-        }
-
-        private void txtEmpleado_Validated(object sender, EventArgs e)
-        {
-            errorProvider1.Clear();
-        }
+        string patronNombre = @"^(([A-Z[ÁÉÍÓÚ][a-zñ[áéíóú]{2,})(\s)?)*[^\s]$";
 
         private void btnEjecutar_Click(object sender, EventArgs e)
         {
-            lstLista.Items.Clear();
+            lstLista.DataSource = null;
             if (rdoAgregar.Checked)
             {
-                if (txtEmpleado.Text!="")
+                if (txtEmpleado.Text!=""&& Regex.IsMatch(txtEmpleado.Text, patronNombre))
                 {
                     Empleados.Add(txtEmpleado.Text);
+                    lstLista.Items.Clear();
                     foreach (string emplead in Empleados)
                     {
                         lstLista.Items.Add(emplead);
@@ -57,17 +39,18 @@ namespace Practica_6
                 }
                 else
                 {
-                    MessageBox.Show("Debe ingresar un nommbre de empleado para agregar...");
+                    MessageBox.Show("Debe ingresar un nommbre de empleado Valido para agregar...\nEl nombre ingresado debe iniciar en mayusculas...");
                     txtEmpleado.Focus();
                 }
             }
             else if (rdoBuscar.Checked)
             {
-                if (txtEmpleado.Text!="")
+                if (txtEmpleado.Text != "" && Regex.IsMatch(txtEmpleado.Text, patronNombre))
                 {
+                    
                     foreach (string emplead in Empleados)
                     {
-                        lstLista.Items.Add(emplead);
+                        
                         if (txtEmpleado.Text==emplead)
                         {
                             lstLista.SelectedItem = emplead;
@@ -83,15 +66,43 @@ namespace Practica_6
             }
             else if (rdoInsertar.Checked)
             {
-                if (txtEmpleado.Text != "")
+                if (txtEmpleado.Text != "" && Regex.IsMatch(txtEmpleado.Text, patronNombre)&&lstLista.Items.Count>=0)
                 {
-                    lstLista.Items.Insert(lstLista.SelectedIndex, txtEmpleado.Text);
-
                     Empleados.Insert(lstLista.SelectedIndex, txtEmpleado.Text);
+                    lstLista.Items.Insert(lstLista.SelectedIndex, txtEmpleado.Text);
                 }
+            }
+            else if (rdoQuitar.Checked)
+            {
+                if ( lstLista.Items.Count >= 0 && lstLista.SelectedIndex!=-1)
+                {
+                    Empleados.RemoveAt(lstLista.SelectedIndex);
+                    lstLista.Items.RemoveAt(lstLista.SelectedIndex);
+                }
+                else
+                {
+                    MessageBox.Show("Error al quitar el nombre...\nDebe seleccionar un nombre para eliminar...");
+                }
+            }
+            else if (rdoOrdenar.Checked)
+            {
+                Empleados.Sort();
+                if (lstLista.Items.Count > 1 && lstLista.Items.Count >= 0)
+                {
+                    lstLista.DataSource = Empleados;
+                    
+                }
+            }
+            else if (rdoLimpiar.Checked)
+            {
+                lstLista.Items.Clear();
+                Empleados.Clear();
             }
         }
 
-
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
