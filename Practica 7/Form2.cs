@@ -107,7 +107,7 @@ namespace Practica_7
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("No fue posible leer el archivo...");
+                    
                 }
                 if (Registro.Count > 0)
                 {
@@ -119,11 +119,12 @@ namespace Practica_7
                     }
                     dgvMascotas.ClearSelection();
                 }
-                else
-                {
-                    MessageBox.Show("No Existen datos almacenados en el archivo...");
-                }
 
+
+            }
+            else
+            {
+                MessageBox.Show("No Existen datos almacenados en el archivo...");
             }
 
         }
